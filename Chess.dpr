@@ -3,9 +3,14 @@ program Chess;
 {$APPTYPE CONSOLE}
 
 uses
-  SysUtils;
+  SysUtils, Windows;
 type
   chess_table = array of array of Byte;
+  function time: int64;
+asm
+   rdtsc
+end;
+
 var
   ch: chess_table;
   movek: array[1..8] of array[1..2] of ShortInt = ((-2, 1), (-1, 2), (1, 2), (2,
@@ -13,6 +18,7 @@ var
   log: array of array[1..3] of Byte;
   count, si, x, y, u, v, i, j, n, m, nm: Byte;
   outin: Boolean = True;
+  t, fr: Int64;
 begin
   Write('Input size of the table n(line) m(row): ');
   Readln(n, m);
@@ -29,6 +35,8 @@ begin
     log[i, 3] := 0;
   Write('Input x and y: ');
   readln(x, y);
+  QueryPerformanceFrequency(fr);
+t := time;
   Dec(x);
   Dec(y);
   while outin do
@@ -72,13 +80,18 @@ begin
         end;
     end;
   end;
+  t := time - t;
   for i := n -1 downto 0 do
   begin
     for j := 0 to m - 1 do
       write(ch[i, j]:3);
     Writeln;
   end;
+  writeln(' time = ', t / fr: 0: 4, ' ms');
   Writeln(outin);
   Readln;
 end.
-
+QueryPerformanceFrequency(fr);
+t := time;
+   t := time - t;
+    writeln('n=', n, ' time = ', t / fr: 0: 4, ' ms');
