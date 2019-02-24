@@ -1,2 +1,0 @@
-# Game-theory
-Delphi lesson 
