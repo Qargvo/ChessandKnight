@@ -65,6 +65,7 @@ begin
       //write opyion and continue
       if count = nm then
       begin
+        //Write_Mas(ch);
         Inc(options_count);
         //Write_Mas(ch);
           log[count, 3] := 0;
@@ -119,6 +120,9 @@ begin
     t := time - t;
     writeln(' time = ', t / fr: 0: 4, ' ms');
     Writeln('Option count = ',options_count);
+    ch:=nil;
+    si:=0;
+    outin:=true;
     options_count:=0;
   end;
   Readln;
