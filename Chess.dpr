@@ -4,6 +4,7 @@ program Chess;
 
 uses
   SysUtils, Windows;
+
 type
   chess_table = array of array of Byte;
 
@@ -35,12 +36,15 @@ var
   t, fr: Int64;
   options_count:Cardinal=0;
    step_counter:Cardinal=0;
+   fn :string = 'outfile.txt';
 begin
   while true do
   begin
 
     Write('Input size of the table n(line) m(row): ');
     Readln(n, m);
+
+
     nm := n * m;
     //chess table initialization
     SetLength(ch, n, m);
@@ -54,6 +58,8 @@ begin
       log[i, 3] := 0;
     Write('Input x and y: ');
     readln(x, y);
+    AssignFile(Output, fn);
+    Rewrite(output);
     QueryPerformanceFrequency(fr);
     t := time;
     Dec(x);
@@ -62,13 +68,16 @@ begin
     begin
       Inc(count);
       ch[x, y] := count;
+
       //write opyion and continue
       if count = nm then
       begin
 
-        //Write_Mas(ch);
+        Write_Mas(ch);
         Inc(options_count);
-        //Write_Mas(ch);
+//        AssignFile(Output, '');
+//        Writeln(options_count);
+//        AssignFile(Output, fn);
           log[count, 3] := 0;
         Dec(count);
         Inc(step_counter);
@@ -121,6 +130,9 @@ begin
       end;
     end;
     t := time - t;
+    writeln(options_count);
+    CloseFile(Output);
+  AssignFile(Output, '');
     writeln(' time = ', t / fr: 0: 4, ' ms');
     Writeln('Option count = ',options_count);
     ch:=nil;
