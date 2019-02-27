@@ -75,9 +75,11 @@ begin
 
         Write_Mas(ch);
         Inc(options_count);
-//        AssignFile(Output, '');
-//        Writeln(options_count);
-//        AssignFile(Output, fn);
+        closefile(output) ;
+        AssignFile(Output, '');
+        Writeln(options_count);
+        AssignFile(Output, fn);
+        reset(Output);
           log[count, 3] := 0;
         Dec(count);
         Inc(step_counter);

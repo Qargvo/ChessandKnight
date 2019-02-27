@@ -77,7 +77,7 @@ ImagebaseMultiple=1
 SuspiciousTypecast=1
 PrivatePropAccessor=1
 UnsafeType=1
-UnsafeCode=1
+UnsafeCode=0
 UnsafeCast=1
 [Linker]
 MapFile=0
@@ -95,7 +95,7 @@ UnitOutputDir=
 PackageDLLOutputDir=
 PackageDCPOutputDir=
 SearchPath=
-Packages=
+Packages=vcl;rtl;dbrtl;inet;inetdb;dsnap;bdertl;vclx;vcldb;vcldbx;visualclx;visualdbclx;vclactnband;vclshlctrls;vclie;xmlrtl;inetdbbde;inetdbxpress;webdsnap;soaprtl;websnap;adortl;dbexpress;dsnapcon;dbxcds;ibxpress;teeui;teedb;tee;dss;indy;VclSmp;qrpt;teeqr;Rave50CLX;Rave50VCL;IntrawebDB_50_70;Intraweb_50_70;VclNewlyext
 Conditionals=
 DebugSourceDirs=
 UsePackages=0
